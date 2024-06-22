@@ -1,14 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioChangeVolume : MonoBehaviour
 {
-    public AudioMixer group;
-    public string floatParam = "MyExposedParam";
-    public void ChangeValue(float f)
+
+    public AudioMixer audioGroup;
+    public string mixerFloatParam = "MyExposedParam";
+
+    [SerializeField] Slider volumeSlider;
+
+    public void ChangeValue()
     {
-        group.SetFloat(floatParam, f);
+
+       audioGroup.SetFloat(mixerFloatParam, volumeSlider.value);
+        
+        Debug.Log("Valor do slider: " + volumeSlider.value);
+
     }
 }
