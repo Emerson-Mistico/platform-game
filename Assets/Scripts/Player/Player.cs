@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
                 playerRigidBody.transform.DOScaleX(-1, soPlayerSetup.swipeDuration);
             }
             
-            playerRigidBody.velocity = new Vector2(-_currentSpeed, playerRigidBody.velocity.y);
+            playerRigidBody.linearVelocity = new Vector2(-_currentSpeed, playerRigidBody.linearVelocity.y);
 
             animator.SetBool(soPlayerSetup.triggerRun, true);
         } 
@@ -106,14 +106,14 @@ public class Player : MonoBehaviour
                 playerRigidBody.transform.DOScaleX(1, soPlayerSetup.swipeDuration);
             }
             
-            playerRigidBody.velocity = new Vector2(_currentSpeed, playerRigidBody.velocity.y);
+            playerRigidBody.linearVelocity = new Vector2(_currentSpeed, playerRigidBody.linearVelocity.y);
 
             animator.SetBool(soPlayerSetup.triggerRun, true);
         }
         else
         {
             // Remove slide effect
-            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+            playerRigidBody.linearVelocity = new Vector2(0, playerRigidBody.linearVelocity.y);
 
             animator.SetBool(soPlayerSetup.triggerRun, false);
         }
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && CheckIsGrounded()) {
 
-            playerRigidBody.velocity = Vector2.up * soPlayerSetup.forceJump;
+            playerRigidBody.linearVelocity = Vector2.up * soPlayerSetup.forceJump;
 
             // if two jumps are pressed starts animation from scratch            
             playerRigidBody.transform.localScale = new Vector3(_currentDirection, 1, 1);
